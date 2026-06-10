@@ -1,7 +1,7 @@
 {
   "name": "oc-observational-memory",
   "version": "0.1.0",
-  "description": "OpenCode observational memory plugin with project-scoped observations, reflections, recall, and compaction context.",
+  "description": "OpenCode observational memory plugin with session-scoped observations, reflections, recall, and compaction context.",
   "type": "module",
   "license": "MIT",
   "main": "./dist/index.js",

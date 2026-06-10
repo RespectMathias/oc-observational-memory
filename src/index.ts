@@ -9,7 +9,7 @@ const DEFAULT_MAX_INJECTED_TOKENS = 1_500;
 const DEFAULT_MAX_COMPACTION_CONTEXT_TOKENS = 2_000;
 const DEFAULT_STORE_DIR = ".opencode/observational-memory";
 
-const CONTEXT_USAGE_INSTRUCTIONS = `Project memory.
+const CONTEXT_USAGE_INSTRUCTIONS = `Current session memory.
 
 - Reflections: stable facts/decisions/constraints.
 - Observations: dated history. Newer wins.
@@ -140,7 +140,7 @@ const plugin: Plugin = async (input, pluginOptions) => {
     },
     "experimental.session.compacting": async (hookInput, output) => {
       if (!options.compactionContext) return;
-      const prefix = "Project observational memory:\n\n";
+      const prefix = "Session observational memory:\n\n";
       const summary = await store.render(
         options.maxCompactionContextTokens - estimateTokens(prefix),
         hookInput.sessionID,
@@ -438,7 +438,7 @@ function extractReflections(observations: Observation[]): Reflection[] {
     .map((observation) => {
       const content = observation.content.replace(
         /^User stated:\s*/i,
-        "Project memory: ",
+        "Session memory: ",
       );
       return {
         id: idFor([content]),
