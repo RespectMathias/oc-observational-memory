@@ -1,0 +1,65 @@
+This plugin is an OpenCode adaptation of the observational-memory design from
+pi-observational-memory by elpapi42 and contributors:
+
+https://github.com/elpapi42/pi-observational-memory
+
+Thanks to elpapi42 and the pi-observational-memory contributors for the idea
+and original implementation.
+
+Third-party license notices:
+
+This project uses code and design ideas from pi-observational-memory.
+pi-observational-memory is licensed under the MIT License.
+
+Copyright (c) 2026 pi-observational-memory contributors
+
+This project uses OpenCode plugin API types, hook shapes, and compaction API
+behavior as source-of-truth implementation references.
+OpenCode is licensed under the MIT License.
+
+Copyright (c) 2025 opencode
+
+MIT License notice for referenced MIT-licensed projects:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Source-of-truth references used for this implementation:
+
+- pi-observational-memory package metadata and extension architecture:
+  .agents/context/pi-observational-memory/package.json
+  .agents/context/pi-observational-memory/src/index.ts
+- pi-observational-memory ledger model, ids, rendering, and recall semantics:
+  .agents/context/pi-observational-memory/src/session-ledger/types.ts
+  .agents/context/pi-observational-memory/src/session-ledger/render-summary.ts
+  .agents/context/pi-observational-memory/src/tools/recall-observation.ts
+- pi-observational-memory compaction design:
+  .agents/context/pi-observational-memory/src/hooks/compaction-hook.ts
+  .agents/context/pi-observational-memory/docs/how-it-works.md
+- OpenCode plugin and compaction APIs:
+  .agents/context/opencode/packages/plugin/src/index.ts
+  .agents/context/opencode/packages/plugin/src/tool.ts
+  .agents/context/opencode/packages/opencode/src/session/compaction.ts
+  .agents/context/opencode/packages/core/src/session/compaction.ts
+
+Design note:
+
+OpenCode does not currently expose pi's custom session-ledger append API to
+plugins. This package therefore uses plugin-owned project storage and injects
+rendered memory through OpenCode's plugin hooks instead of replacing OpenCode's
+default compaction.

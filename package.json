@@ -1,0 +1,41 @@
+{
+  "name": "oc-observational-memory",
+  "version": "0.1.0",
+  "description": "OpenCode observational memory plugin with project-scoped observations, reflections, recall, and compaction context.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "observational-memory",
+    "memory",
+    "compaction"
+  ],
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.17.1"
+  },
+  "dependencies": {
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.15"
+  }
+}
