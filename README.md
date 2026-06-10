@@ -66,7 +66,7 @@ Memory is session-local, matching pi-observational-memory's in-session continuit
 
 ## TODO
 
-- Replace regex extraction with memory worker for better observation and reflection quality.
+- Replace regex extraction with memory worker from v3 design for better observation and reflection quality.
 
 ## Context Budget
 
