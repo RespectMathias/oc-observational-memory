@@ -9,10 +9,10 @@ Thanks to elpapi42 and the pi-observational-memory contributors for the idea and
 ## Behavior
 
 - Records deterministic observations from user prompts and assistant completions.
-- Promotes stable high-value observations into reflections.
-- Stores session-local memory in `.opencode/observational-memory/memory.json` by default.
+- Promotes explicit high-value observations into reflections.
+- Stores session-scoped records in `.opencode/observational-memory/memory.json` by default.
 - Injects a bounded memory view through `experimental.chat.system.transform`.
-- Adds a separately bounded memory view to default compaction through `experimental.session.compacting.context`.
+- Adds bounded memory to `output.context` during `experimental.session.compacting`.
 - Exposes `recall_observation` tool for exact source evidence by memory id.
 - Removes a session's memory when OpenCode emits `session.deleted`.
 
@@ -60,9 +60,13 @@ Restart OpenCode after changing plugin config or plugin files.
 
 ## Scope
 
-This is pi-observational-memory adapted for OpenCode constraints. It is not replacement compaction. It does not summarize whole transcript. It stores selected session facts and progress records, then lets OpenCode's default compaction continue managing overflow.
+This is pi-observational-memory adapted for OpenCode constraints. It is not replacement compaction. It does not summarize the whole transcript. It stores selected session facts and progress records, then lets OpenCode's default compaction continue managing overflow.
 
-Memory is session-local, matching pi-observational-memory's branch-local model. Memories from one OpenCode session are not injected into another session, recall is limited to the current session, and `session.deleted` removes that session's stored memory.
+Memory is session-local, matching pi-observational-memory's in-session continuity model. Memories from one OpenCode session are not injected into another session, recall is limited to the current session, and `session.deleted` removes that session's stored memory.
+
+## TODO
+
+- Replace regex extraction with memory worker for better observation and reflection quality.
 
 ## Context Budget
 
